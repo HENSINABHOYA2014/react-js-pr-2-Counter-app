@@ -1,24 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
+import './Counter.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [no, setNo] = useState(0);
+
+  const cntplus = () => {
+    setNo(no + 1);
+  };
+
+  const cntminus = () => {
+    if (no > 0) {
+      setNo(no - 1);
+    }
+  };
+  const reset = () => {
+    setNo(0);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <section>
+        <div className="center">
+          <h1>click counter</h1>
+          <input type="number" value={no}/>
+          <div className="buttons">
+            <button className="sub" onClick={cntplus}>
+              +
+            </button>
+            <button className="reset" onClick={reset}>
+              reset
+            </button>
+            <button className="add" onClick={cntminus}>
+              -
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
